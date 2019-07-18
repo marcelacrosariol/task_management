@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="Task Manager Project">
+    <meta name="author" content="Marcela Crosariol">
+
+    <link rel="icon" href="static/icon/azure_devops.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/fabric-icons-inline.css">
+    <link rel="stylesheet" href="static/css/tasks-template.css">
+
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="static/js/vue.min.js"></script>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        var vm = new Vue({
+          el: '#taskboard',
+          data: function (){ 
+            return {
+              new_title: null,
+              tasks: [],
+            }
+          },
+          methods: {
+            "save_item": function save_item(){
+              this.tasks.push(this.new_title)
+              this.new_title = null
+            },
+          }
+        });
+      })
+
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("task", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("task");
+        ev.target.appendChild(document.getElementById(data));
+      }
+    </script>
+
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="header-logo">
+        <a href="#" class="font-bold font-navigation">
+          <img src="static/icon/azure_devops.png">
+          <span class="header-logo-text">Azure DevOps</span>
+        </a>
+        <div class="breacbrumbs">
+          <span class="breadcrumb-item">
+            <a href="#">Username</a></span>
+          <span class="breadcrumb-slash"> / </span>
+          <span class="breadcrumb-item">
+            <a href="#">Project</a>
+          </span>
+          <span class="breadcrumb-slash"> / </span>
+          <span class="breadcrumb-item">
+            <a href="#">Boards</a>
+          </span>
+          <span class="breadcrumb-slash"> / </span>
+          <span class="breadcrumb-item">
+            <a href="#">Sprints</a>
+          </span>
+        </div>
+        <div class="header-right">
+            <input type="text" placeholder="Search" name="search">
+          <a href="#">
+            <span aria-hidden="true" class="ms-Icon ms-Icon--CheckList"></span>
+          </a>
+          <a href="#">
+            <span aria-hidden="true" class="ms-Icon ms-Icon--Shop"></span>
+          </a>
+          <a href="#" id="header_user">U
+          </a>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <nav>
+        <ul>
+        	<li style="padding: 2px 0 8px; border-bottom: 1px rgba(0, 0, 0, 0.09) solid">
+          	<span class="font-bold">Project</span>
+          	<a href="">
+              <span aria-hidden="true" class="ms-Icon ms-Icon--Add icons">
+            </a>
+          </li>
+        </ul>
+        <ul id="menu">
+          <li>
+            <img src="static/icon/devops/overview.png">
+            <a href="#">Overview</a>
+          </li>
+          <li>
+            <img src="static/icon/devops/boards.png">
+            <a href="#" class="selected">Boards</a>
+          </li>
+          <li>
+            <img src="static/icon/devops/repos.png">
+            <a href="#">Repos</a>
+          </li>
+          <li>
+            <img src="static/icon/devops/pipelines.png">
+            <a href="#">Pipelines</a>
+          </li>
+          <li>
+            <img src="static/icon/devops/tests.png">
+            <a href="#">Test Plans</a>
+          </li>
+          <li>
+            <img src="static/icon/devops/artifacts.png">
+            <a href="#">Artifacts</a>
+          </li>
+        </ul>
+        <hr width="90%">
+        <ul>
+          <li style="padding: 8px 0 8px; border-top: 1px rgba(0, 0, 0, 0.09) solid">
+            <span aria-hidden="true" class="ms-Icon ms-Icon--Settings icons">
+            Project settings
+            <span aria-hidden="true" class="ms-Icon ms-Icon--DoubleChevronLeft icons">
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <div class="content-nav">
+          <div id="project-info">
+            <span aria-hidden="true" class="ms-Icon ms-Icon--Sprint icons"></span>
+              Project Team
+            <span aria-hidden="true" class="ms-Icon ms-Icon--ChevronDown icons-sm"></span> 
+            <span aria-hidden="true" style="color:rgb(240, 206, 10)" class="ms-Icon ms-Icon--FavoriteStar"></span> 
+            <span aria-hidden="true" class="ms-Icon ms-Icon--People"></span>
+          </div>
+          <div id="page-menu">
+            <ul>
+              <li class="font-bold selected"><a href="#">Taskboard</a></li>
+              <li><a href="#">Backlog</a></li>
+              <li><a href="#">Capacity</a></li>
+            </ul>
+            <span class="dash">|</span>
+            <a href="#" class="button" onclick="" data-toggle="modal" data-target="#myModal">
+              <span aria-hidden="true" class="ms-Icon ms-Icon--Add icons"></span>
+              New Work Item
+            </a>
+            <a href="#" class="button" onclick="">
+              <span aria-hidden="true" class="ms-Icon ms-Icon--Repair icons"></span>
+              Column Options
+            </a>
+              
+            <a href="#" class="button" onclick="">
+              <span aria-hidden="true" class="ms-Icon ms-Icon--Sprint icons"></span>
+              Sprint 1
+              <span aria-hidden="true" class="ms-Icon ms-Icon--ChevronDown icons"></span>
+            </a>
+
+            <a href="#" class="button" onclick="">
+              <span aria-hidden="true" class="ms-Icon ms-Icon--Sprint icons"></span>
+              Person: All
+              <span aria-hidden="true" class="ms-Icon ms-Icon--ChevronDown icons"></span>
+            </a>
+            <a href="#" class="button"><span aria-hidden="true" class="ms-Icon ms-Icon--Equalizer icons"></span></a>
+            <a href="#" class="button"><span aria-hidden="true" class="ms-Icon ms-Icon--Filter icons"></span></a>
+            <a href="#" class="button"><span aria-hidden="true" class="ms-Icon ms-Icon--Settings icons"></span></a>
+            <a href="#" class="button"><span aria-hidden="true" class="ms-Icon ms-Icon--FullScreen icons"></span></a>
+          </div>
+        </div>
+        <div id="taskboard">
+          <div id="backlog"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+            class="board-column">
+            <span aria-hidden="true" class="ms-Icon ms-Icon--DoubleChevronUp12 icons icons-sm"></span>
+            Collapse all
+            <div :id="item" draggable="true" class="card" v-for="item in tasks" ondragstart="drag(event)" >
+              <p>{{ item }}</p>
+              <p>Unassigned</p>
+              <p>State: To Do</p>
+            </div>
+          </div>
+          <div id="new"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+          class="board-column">
+            New
+          </div>
+          <div id="active"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+          class="board-column">
+            Active
+            <div
+              ondragstart="drag(event)"
+              draggable="true"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+              >
+            </div>
+          </div>
+          <div id="closed"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+          class="board-column">
+            Closed
+          </div>
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header add_header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <div class="row">
+                    <div class="col-md-12">
+                      NEW ISSUE*
+                      <span v-if="!new_title" class="text-danger">Field 'Title' cannot be empty</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-md-12">
+                      <input type="text" placeholder="Enter title" v-model="new_title" name="" class="form-control" required>               
+                    </p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">Unassigned</div>
+                    <div class="col-md-4">0 comments</div>
+                    <div class="col-md-4">
+                      <button type="button" class="btn btn-sm modal-button" :disabled="!new_title" data-dismiss="modal"  v-on:click="save_item()">Save & Close</button>
+                      <span aria-hidden="true" class="ms-Icon ms-Icon--Refresh icons-sm icons" style="padding: 0px 5px">
+                      <span aria-hidden="true" class="ms-Icon ms-Icon--Undo icons-sm icons" style="padding: 0px 5px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

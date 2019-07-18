@@ -1,0 +1,116 @@
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Helvetica, Ubuntu,Arial, sans-serif;
+}
+
+header{
+    padding: 5px 6px 10px 5px;
+    border-bottom: 1px rgba(0, 0, 0, .15) solid;
+    display: flex;
+    flex-direction: row;
+}
+
+nav{
+    display: inline-flex;
+    width: 260px;
+    margin-top: 39px;
+    position: fixed;
+    left: 0;
+    background-color: rgba(0, 0, 0, .08);
+    flex-direction: column;
+}
+
+nav .proj-title{
+    background-color: rgb(185, 29, 71);
+    border-radius: 2px;
+}
+
+input, button, textarea, select {
+    font-family: "Segoe UI VSS (Regular)","Segoe UI", Roboto, Helvetica,Ubuntu,Arial,sans-serif;
+    font-size: 100%;
+}
+
+section{
+    display: inline-flex;
+    flex-grow: 2;
+    order:1;
+    flex-direction: column
+}
+
+.header-logo{
+    display: inline-flex;
+    min-width:  260px;
+    order: 0;
+}
+
+.header-logo a{
+    color: rgba(0,120,212,1);
+    text-decoration: none;
+}
+.header-logo img{
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.breacbrumbs{
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .55);
+    padding: 2px 0px;
+}
+
+.breadcrumb-item{
+    padding: 2px 8px 2px 2px;
+}
+.breadcrumb-item a{
+    color: rgba(0, 0, 0, .55);
+    text-decoration: none;
+    padding: 2px 6px;
+}
+.breadcrumb-item:hover{
+    background-color:rgba(0, 0, 0, 0.05); 
+}
+.breadcrumb-slash{
+    font-size: 16px;
+    padding: 0 4px;
+}
+
+.header-right{
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.header-right a{
+    width:48px;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(0, 0, 0, .55);
+    font-size:16px;
+    vertical-align: bottom;
+}
+
+#header_user{
+    background-color: pink;
+    border-radius: 50%;
+    padding: 4px;
+    color: white;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+
+.font-navigation{
+    font-size: 14px;
+}
+
+.font-bold{
+    font-weight: bold;
+}
